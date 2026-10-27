@@ -1,13 +1,14 @@
 import { describe, it, expect, afterEach } from 'vitest';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
+import { pathToFileURL } from 'node:url';
 import { mkdtemp, writeFile, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { createServer } from 'node:http';
 const exec = promisify(execFile), temps: string[] = [];
 const cli = resolve('src/cli.ts');
-const loader = resolve('node_modules/tsx/dist/loader.mjs');
+const loader = pathToFileURL(resolve('node_modules/tsx/dist/loader.mjs')).href;
 async function run(args: string[], env: NodeJS.ProcessEnv = {}): Promise<{stdout: string; stderr: string}> {
   return exec(process.execPath, ['--import', loader, cli, ...args], {env: {...process.env, ...env}, timeout: 15_000});
 }

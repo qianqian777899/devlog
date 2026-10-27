@@ -1,5 +1,5 @@
 import { describe, it, expect, afterEach } from 'vitest';
-import { mkdtemp, mkdir, writeFile, readFile, rm, symlink } from 'node:fs/promises';
+import { mkdtemp, mkdir, writeFile, readFile, rm, symlink, realpath } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
@@ -14,7 +14,7 @@ import { loadConfig, resolveAI, saveConfig, validateConfig } from '../src/config
 import { endpoint, polishReport } from '../src/ai.js';
 import type { ReportData } from '../src/types.js';
 const temp: string[] = [];
-async function directory(): Promise<string> { const path = await mkdtemp(join(tmpdir(), 'devlog-test-')); temp.push(path); return path; }
+async function directory(): Promise<string> { const path = await mkdtemp(join(tmpdir(), 'devlog-test-')); temp.push(path); return realpath(path); }
 afterEach(async () => { await Promise.all(temp.splice(0).map(path => rm(path, {recursive: true, force: true}))); });
 const period = {since: new Date('2026-10-27T00:00:00Z'), until: new Date('2026-10-28T00:00:00Z')};
 const empty: ReportData = {period, commits: [], activities: [], warnings: []};
