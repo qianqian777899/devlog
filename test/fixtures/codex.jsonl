@@ -1,0 +1,9 @@
+{"timestamp":"2026-10-26T23:50:00Z","type":"session_meta","payload":{"id":"codex-fixture","cwd":"__PROJECT__","cli_version":"fixture"}}
+{"timestamp":"2026-10-26T23:55:00Z","type":"event_msg","payload":{"type":"user_message","message":"Yesterday's request"}}
+{"timestamp":"2026-10-27T09:00:00Z","type":"event_msg","payload":{"type":"user_message","message":"Fix weekly task migration"}}
+{"timestamp":"2026-10-27T09:00:01Z","type":"response_item","payload":{"type":"message","role":"user","content":[{"type":"input_text","text":"Fix weekly task migration"}]}}
+{"timestamp":"2026-10-27T09:01:00Z","type":"response_item","payload":{"type":"custom_tool_call","name":"apply_patch","input":"*** Begin Patch\n*** Update File: src/week.ts\n@@\n-old\n+new\n*** End Patch"}}
+{"timestamp":"2026-10-27T09:02:00Z","type":"response_item","payload":{"type":"message","role":"assistant","content":[{"type":"output_text","text":"All tests passed (unverified claim should never appear)"}]}}
+{"timestamp":"2026-10-27T09:03:00Z","type":"response_item","payload":{"type":"function_call_output","output":"SECRET TOOL OUTPUT MUST NOT APPEAR"}}
+{"timestamp":"2026-10-27T09:04:00Z","type":"response_item","payload":{"type":"message","role":"user","content":[{"type":"input_text","text":"Add a regression test"}]}}
+{"timestamp":"2026-10-28T00:00:00Z","type":"event_msg","payload":{"type":"user_message","message":"Tomorrow's request"}}

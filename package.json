@@ -1,0 +1,68 @@
+{
+  "name": "@qianqian777899/devlog",
+  "version": "0.1.0",
+  "description": "Offline-first daily and weekly reports from Git, Codex CLI and Claude Code",
+  "type": "module",
+  "bin": {
+    "devlog": "dist/cli.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "README.en.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "docs"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx src/cli.ts",
+    "test": "vitest run",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.test.json",
+    "check": "npm run lint && npm run typecheck && npm test && npm run build",
+    "prepack": "npm run build",
+    "demo": "npm run build && node scripts/demo.mjs"
+  },
+  "license": "MIT",
+  "author": "qianqian777899",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qianqian777899/devlog.git"
+  },
+  "homepage": "https://github.com/qianqian777899/devlog#readme",
+  "bugs": "https://github.com/qianqian777899/devlog/issues",
+  "keywords": [
+    "devlog",
+    "daily-report",
+    "weekly-report",
+    "codex",
+    "claude-code",
+    "git",
+    "offline",
+    "cli"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.0",
+    "@types/node": "^20.19.0",
+    "eslint": "^9.39.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0",
+    "typescript-eslint": "^8.46.0",
+    "vitest": "^4.1.12"
+  }
+}
